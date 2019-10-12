@@ -10,3 +10,9 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+if (module.hot) { // 添加接收模块更新的代码
+    module.hot.accept('./App.js', () => {
+        let str = require('./App.js').default;
+        console.log(str, '文件更新了');
+    })
+}
